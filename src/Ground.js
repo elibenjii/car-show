@@ -21,13 +21,13 @@ const Ground = () => {
   }, [normal, roughness])
 
   useFrame((state, delta) => {
-    let t = -state.clock.getElapsedTime() * 0.128
+    const t = -state.clock.getElapsedTime() * 0.128
     roughness.offset.set(0, t % 1)
     normal.offset.set(0, t % 1)
   })
 
   return (
-    <mesh rotation-x={-Math.PI * 0.5} castShadow receiveShadow>
+    <mesh rotation-x={-Math.PI * 0.5} receiveShadow>
       <planeGeometry args={[30, 30]} />
       <MeshReflectorMaterial
         envMapIntensity={0}
@@ -39,9 +39,9 @@ const Ground = () => {
         roughness={0.7}
         blur={[1000, 400]} // Blur ground reflections (width, heigt), 0 skips blur
         mixBlur={30} // How much blur mixes with surface roughness (default = 1)
-        mixStrength={80} // Strength of the reflections
+        mixStrength={50} // Strength of the reflections
         mixContrast={1} // Contrast of the reflections
-        resolution={1024} // Off-buffer resolution, lower=faster, higher=better quality, slower
+        resolution={150} // Off-buffer resolution, lower=faster, higher=better quality, slower
         mirror={0} // Mirror environment, 0 = texture colors, 1 = pick up env colors
         depthScale={0.01} // Scale the depth factor (0 = no depth, default = 0)
         minDepthThreshold={0.9} // Lower edge for the depthTexture interpolation (default = 0)

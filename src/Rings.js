@@ -6,14 +6,15 @@ const Rings = () => {
   const itemsRef = useRef([])
 
   useFrame((state, delta) => {
-    let elapsed = state.clock.getElapsedTime()
+    const elapsed = ((state.clock.getElapsedTime() * 0.4) % 3.5) * 2
 
     for (let i = 0; i < itemsRef.current.length; i++) {
       let mesh = itemsRef.current[i]
-      let z = (i - 7) * 3.5 + ((elapsed * 0.4) % 3.5) * 2
+      let z = (i - 7) * 3.5 + elapsed
       let dist = Math.abs(z)
       mesh.position.set(0, 0, -z)
-      mesh.scale.set(1 - dist * 0.04, 1 - dist * 0.04, 1 - dist * 0.04)
+      const distFu = 1 - dist * 0.04
+      mesh.scale.set(distFu, distFu, distFu)
 
       let colorScale = 1
       if (dist > 2) {

@@ -59,6 +59,7 @@ const CarShow = () => {
       />
       <Ground />
       <Rings />
+
       {/* <Boxes /> */}
       {/* <FloatingGrid /> */}
       {/* <EffectComposer>
