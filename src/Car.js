@@ -9,6 +9,7 @@ const Car = () => {
   const gltf = useLoader(GLTFLoader, "models/car/scene.gltf")
 
   useEffect(() => {
+    console.log("gltf", gltf)
     gltf.scene.scale.set(0.005, 0.005, 0.005)
     gltf.scene.position.set(0, -0.035, 0)
     gltf.scene.traverse((object) => {
@@ -21,13 +22,13 @@ const Car = () => {
   }, [gltf])
 
   useFrame((state, delta) => {
-    let t = state.clock.getElapsedTime()
+    const t = state.clock.getElapsedTime() * 2
 
-    let group = gltf.scene.children[0].children[0].children[0]
-    group.children[0].rotation.x = t * 2
-    group.children[2].rotation.x = t * 2
-    group.children[4].rotation.x = t * 2
-    group.children[6].rotation.x = t * 2
+    const { children } = gltf.scene.children[0].children[0].children[0]
+    children[0].rotation.x = t
+    children[2].rotation.x = t
+    children[4].rotation.x = t
+    children[6].rotation.x = t
   })
 
   return <primitive object={gltf.scene} />

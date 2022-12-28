@@ -100,7 +100,7 @@ function App() {
         </div>
       }
     >
-      <Canvas shadows frameloop="demand" performance={{ min: 0.1 }}>
+      <Canvas shadows performance={{ min: 0.1 }}>
         <CarShow />
       </Canvas>
     </Suspense>
