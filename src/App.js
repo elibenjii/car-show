@@ -12,13 +12,16 @@ import {
   Environment,
   OrbitControls,
   PerspectiveCamera,
+  Html,
+  useProgress,
 } from "@react-three/drei"
 import "./style.css"
-import Boxes from "./Boxes"
+// import Boxes from "./Boxes"
 import Car from "./Car"
 import Ground from "./Ground"
-import FloatingGrid from "./FloatingGrid"
+// import FloatingGrid from "./FloatingGrid"
 import Rings from "./Rings"
+import Loader from "./Loader"
 
 const CarShow = () => {
   return (
@@ -27,7 +30,7 @@ const CarShow = () => {
       <PerspectiveCamera maxDefault fov={50} position={[3, 2, 5]} />
       <color args={[0, 0, 0]} attach="background" />
 
-      <CubeCamera resolution={256} frames={Infinity}>
+      <CubeCamera resolution={256} frameloop="demand">
         {(texture) => (
           <>
             <Environment map={texture} />
@@ -56,15 +59,9 @@ const CarShow = () => {
       />
       <Ground />
       <Rings />
-      <Boxes />
-      <FloatingGrid />
-      <EffectComposer>
-        {/* <DepthOfField
-          focusDistance={0.0035}
-          focalLength={0.01}
-          bokehScale={3}
-          height={480}
-        /> */}
+      {/* <Boxes /> */}
+      {/* <FloatingGrid /> */}
+      {/* <EffectComposer>
         <Bloom
           blendFunction={BlendFunction.ADD}
           intensity={1.3} // The bloom intensity.
@@ -78,15 +75,32 @@ const CarShow = () => {
           blendFunction={BlendFunction.NORMAL} // blend mode
           offset={[0.0005, 0.0012]} // color offset
         />
-      </EffectComposer>
+      </EffectComposer> */}
     </>
   )
 }
 
 function App() {
+  const { progress } = useProgress()
+  console.log("progress", progress)
   return (
-    <Suspense fallback={null}>
-      <Canvas shadows>
+    <Suspense
+      fallback={
+        <div
+          style={{
+            width: "100vw",
+            height: "100vh",
+            display: "flex",
+            justifyContent: "center",
+            alignItems: "center",
+            color: "white",
+          }}
+        >
+          <h1> Loading {progress}%</h1>
+        </div>
+      }
+    >
+      <Canvas shadows frameloop="demand" performance={{ min: 0.1 }}>
         <CarShow />
       </Canvas>
     </Suspense>
