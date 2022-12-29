@@ -17,7 +17,7 @@ import {
 } from "@react-three/drei"
 import "./style.css"
 // import Boxes from "./Boxes"
-import Car from "./Car"
+import Car from "./Car2"
 import Ground from "./Ground"
 // import FloatingGrid from "./FloatingGrid"
 import Rings from "./Rings"
@@ -27,7 +27,7 @@ const CarShow = () => {
   return (
     <>
       <OrbitControls target={[0, 0.35, 0]} maxPolarAngle={1.45} />
-      <PerspectiveCamera maxDefault fov={50} position={[3, 2, 5]} />
+      <PerspectiveCamera maxDefault fov={500} position={[3, 2, 5]} />
       <color args={[0, 0, 0]} attach="background" />
 
       <CubeCamera resolution={256} frameloop="demand">
@@ -40,7 +40,7 @@ const CarShow = () => {
       </CubeCamera>
 
       <spotLight
-        color={[1, 0.25, 0.7]}
+        color={[0.255, 0.255, 0.255]}
         intensity={1.5}
         angle={0.6}
         penumbra={0.5}
@@ -49,7 +49,7 @@ const CarShow = () => {
         shadow-bias={-0.0001}
       />
       <spotLight
-        color={[0.14, 0.5, 1]}
+        color={[0.255, 0.255, 0.255]}
         intensity={2}
         angle={0.6}
         penumbra={0.5}
@@ -62,21 +62,21 @@ const CarShow = () => {
 
       {/* <Boxes /> */}
       {/* <FloatingGrid /> */}
-      {/* <EffectComposer>
+      <EffectComposer>
         <Bloom
           blendFunction={BlendFunction.ADD}
-          intensity={1.3} // The bloom intensity.
+          intensity={0.3} // The bloom intensity.
           width={300} // render width
           height={300} // render height
           kernelSize={5} // blur kernel size
           luminanceThreshold={0.15} // luminance threshold. Raise this value to mask out darker elements in the scene.
           luminanceSmoothing={0.025} // smoothness of the luminance threshold. Range is [0, 1]
         />
-        <ChromaticAberration
+        {/* <ChromaticAberration
           blendFunction={BlendFunction.NORMAL} // blend mode
           offset={[0.0005, 0.0012]} // color offset
-        />
-      </EffectComposer> */}
+        /> */}
+      </EffectComposer>
     </>
   )
 }

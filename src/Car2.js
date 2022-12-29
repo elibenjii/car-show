@@ -6,11 +6,12 @@ import { Mesh } from "three"
 // based on "Chevrolet Corvette (C7)" (https://sketchfab.com/3d-models/chevrolet-corvette-c7-2b509d1bce104224b147c81757f6f43a)
 // by Martin Trafas (https://sketchfab.com/Bexxie) licensed under CC-BY-4.0 (http://creativecommons.org/licenses/by/4.0/)
 const Car = () => {
-  const { scene } = useGLTF("models/ferrari/scene.gltf")
+  const { scene } = useGLTF("models/chevrolet_corvette/scene.gltf")
 
   useEffect(() => {
-    scene.scale.set(50, 50, 50)
-    scene.position.set(0, -0.1, 0)
+    scene.scale.set(1, 1, 1)
+    scene.position.set(0, 0, 0)
+    scene.rotation.y = 3.2
 
     // scene.scale.set(0.005, 0.005, 0.005)
     // scene.position.set(0, -0.035, 0)
@@ -25,9 +26,13 @@ const Car = () => {
 
   useFrame((state, delta) => {
     const t = state.clock.getElapsedTime() * 2
-    scene.children[0].children[0].children[0].children[0].children[25].rotation.x =
-      t
-    // scene.children[0].children[0].children[0].children[0].rotation.x = t
+    // scene.children[0].children[0].children[0].children[0].children[25].rotation.x =
+    //   t
+    scene.children[0].children[0].children[0].children[0].rotation.x = -t
+    scene.children[0].children[0].children[0].children[1].rotation.x = -t
+    scene.children[0].children[0].children[0].children[2].rotation.x = -t
+    scene.children[0].children[0].children[0].children[3].rotation.x = -t
+
     // scene.children[0].children[0].children[0].children[0].rotation.x = t
     // scene.children[0].children[0].children[0].children[1].rotation.x = t
     // scene.children[0].children[0].children[0].children[2].rotation.x = t
