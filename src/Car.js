@@ -21,6 +21,7 @@ const Car = () => {
         object.material.envMapIntensity = 20
       }
     })
+    console.log(actions.Animation)
     actions.Animation.play()
   }, [scene])
 

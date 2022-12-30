@@ -40,7 +40,7 @@ const CarShow = () => {
       </CubeCamera> */}
 
       <spotLight
-        color={[0.255, 0.255, 0.255]}
+        color={[0.6, 0.6, 0.6]}
         intensity={1.5}
         angle={0.6}
         penumbra={0.5}
