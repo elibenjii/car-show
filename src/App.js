@@ -17,7 +17,7 @@ import {
 } from "@react-three/drei"
 import "./style.css"
 // import Boxes from "./Boxes"
-import Car from "./Car2"
+import Car from "./Car"
 import Ground from "./Ground"
 // import FloatingGrid from "./FloatingGrid"
 import Rings from "./Rings"
@@ -30,14 +30,14 @@ const CarShow = () => {
       <PerspectiveCamera maxDefault fov={500} position={[3, 2, 5]} />
       <color args={[0, 0, 0]} attach="background" />
 
-      <CubeCamera resolution={256} frameloop="demand">
+      {/* <CubeCamera resolution={256} frameloop="demand">
         {(texture) => (
           <>
             <Environment map={texture} />
             <Car />
           </>
         )}
-      </CubeCamera>
+      </CubeCamera> */}
 
       <spotLight
         color={[0.255, 0.255, 0.255]}
@@ -57,8 +57,9 @@ const CarShow = () => {
         castShadow
         shadow-bias={-0.0001}
       />
-      <Ground />
-      <Rings />
+      {/* <Ground />
+      <Rings /> */}
+      <Car />
 
       {/* <Boxes /> */}
       {/* <FloatingGrid /> */}
